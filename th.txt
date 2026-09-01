@@ -1,0 +1,23 @@
+npm i react-router-dom
+
+src:
+ components
+    admin
+    student
+    common
+        Login.jsx
+        HeroPage.jsx
+ 
+ router
+   AppRouter.jsx
+
+
+--------------------------------------------
+
+old router:
+<BrowserRouter> --> main.jsx
+<Routes>  -->app.jsx
+<Route> --> app.jsx
+
+<BrowserRouter> --> createBrowserRouter --> AppRouter.jsx
+<Route path= "" element = {<COmponent/>} ---> AppRouter
