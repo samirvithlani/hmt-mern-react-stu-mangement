@@ -12,6 +12,11 @@ src:
    AppRouter.jsx
 
 
+npm install tailwindcss @tailwindcss/vite
+vite.config.js -->plugins.
+index.css
+
+
 --------------------------------------------
 
 old router:
