@@ -1,11 +1,13 @@
+
+import { House } from "lucide-react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export const StudentNavbar = () => {
   const linkList = [
-    { name: "HOME", url: "/home" },
-    { name: "Exams", urls: "/exams" },
-    { name: "Attendace", url: "/att" },
+    { name: "HOME", url: "/home",icon:<House></House> },
+    { name: "Exams", url: "/student/exams" },
+    { name: "Attendace", url: "/student/attendance" },
     { name: "Settings", url: "/settings" },
   ];
   const [isMenuOpen, setisMenuOpen] = useState(false);
@@ -92,7 +94,9 @@ export const StudentNavbar = () => {
             )}
           </button>
         </div>
+        
       </nav>
+
       {/* overlay */}
       {isMenuOpen && (
         <>
@@ -117,8 +121,8 @@ export const StudentNavbar = () => {
             <div className="flex flex-col gap-6 px-6 py-6">
               {linkList.map((elm) => {
                 return (
-                  <Link className="text-lg font-medium text-gray-500 hover:text-blue-500">
-                    {elm.name}
+                  <Link onClick={()=>{setisMenuOpen(false)}} to={elm.url} className="flex items-center gap-2 text-lg font-medium text-gray-500 hover:text-blue-500">
+                    {elm.name}  {elm.icon}
                   </Link>
                 );
               })}
@@ -126,6 +130,11 @@ export const StudentNavbar = () => {
           </div>
         </>
       )}
+
+      {/* it is use for load children componenet */}
+      <div className="m-4 bg-gray-200 h-screen rounded-xl text-center border-[1px]">
+        <Outlet/> 
+        </div>
     </>
   );
 };
