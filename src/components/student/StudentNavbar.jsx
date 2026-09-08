@@ -95,15 +95,17 @@ export const StudentNavbar = () => {
       </nav>
       {/* overlay */}
       {isMenuOpen && (
-        <div
-          onClick={() => {
-            setisMenuOpen(false);
-          }}
-          className="fixed inset-0 z-40 bg-black/40 md:hidden"
-        >
+        <>
+          <div
+            onClick={() => {
+              setisMenuOpen(false);
+            }}
+            className="fixed inset-0 z-40 bg-black/40 md:hidden"
+          ></div>
+
           {/* drawer */}
           <div
-            className={`fixed right-0 top-0 z-50 h-screen w-80 bg-white shadow-2xl transition-transform duration-600 md:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
+            className={`fixed left-0 top-0 z-50 h-screen w-80 bg-white shadow-2xl transition-transform duration-300 md:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
           >
             {/* drawer header */}
             <div className="flex items-center justify-between border-b border-gray-500 px-5 py-5">
@@ -122,7 +124,7 @@ export const StudentNavbar = () => {
               })}
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
