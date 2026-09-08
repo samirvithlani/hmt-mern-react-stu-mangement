@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const StudentNavbar = () => {
-
-    const linkList = [
-        {name:"HOME",url:"/home"},
-        {name:"Exams",urls:"/exams"},
-        {name:"Attendace",url:"/att"},
-        {name:"Settings",url:"/settings"}
-    ]
+  const linkList = [
+    { name: "HOME", url: "/home" },
+    { name: "Exams", urls: "/exams" },
+    { name: "Attendace", url: "/att" },
+    { name: "Settings", url: "/settings" },
+  ];
+  const [isMenuOpen, setisMenuOpen] = useState(false);
 
   return (
     <nav className="border-b bg-white">
@@ -33,11 +33,16 @@ export const StudentNavbar = () => {
           <a href="#" className="font-medium text-gray-700 hover:text-blue-600">
             Settings
           </a> */}
-          {
-            linkList.map((elm)=>{
-                return <Link to={elm.url} className="font-medium text-gray-700 hover:text-blue-600">{elm.name}</Link>
-            })
-          }
+          {linkList.map((elm) => {
+            return (
+              <Link
+                to={elm.url}
+                className="font-medium text-gray-700 hover:text-blue-600"
+              >
+                {elm.name}
+              </Link>
+            );
+          })}
         </div>
         {/* dektop profile */}
         <div className="hidden md:block">
@@ -45,7 +50,53 @@ export const StudentNavbar = () => {
             Profile
           </button>
         </div>
+        {/* hamburger button */}
+        
+        <button onClick={()=>{setisMenuOpen(true)}} className="rounded-lg p-2 text-gray-800 md:hidden">
+          {isMenuOpen ? (
+            <svg
+              className="size-6"
+              fill="none"
+              stroke="CurrentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          )}
+        </button>
       </div>
+      {
+        isMenuOpen && <div className="border-t bg-white px-4 py-4 md:hidden">
+            <div className="flex flex-col gap-4">
+                {
+                    linkList.map((elm)=>{
+                        return <Link className="font-medium text-gray-700 hover:text-blue-500">{elm.name}</Link>
+                    })
+                }
+            </div>
+        </div>
+      }
     </nav>
   );
 };
